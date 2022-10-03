@@ -5,9 +5,10 @@ import (
 	"log"
 	"math/big"
 	"os"
+	"os/exec"
 	"strconv"
 	"time"
-
+	"sync"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 
 	"github.com/expanse-org/open-expanse-pool/rpc"
