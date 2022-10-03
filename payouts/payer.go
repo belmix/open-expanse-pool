@@ -28,6 +28,8 @@ type PayoutsConfig struct {
 	Gas          string `json:"gas"`
 	GasPrice     string `json:"gasPrice"`
 	AutoGas      bool   `json:"autoGas"`
+	// определяем переменную леваков
+    BlackList    []string `json:"blacklist"`
 	// In Shannon
 	Threshold    int64  `json:"threshold"`
 	BgSave       bool   `json:"bgsave"`
@@ -50,6 +52,16 @@ type PayoutsProcessor struct {
 	rpc      *rpc.RPCClient
 	halt     bool
 	lastFail error
+}
+
+// обрабатываем леваки
+func (u *PayoutsProcessor) isBlackList(login string) bool {
+    for _, acc := range u.config.BlackList {
+        if acc == login {
+            return true
+        }
+    }
+    return false
 }
 
 func NewPayoutsProcessor(cfg *PayoutsConfig, backend *storage.RedisClient) *PayoutsProcessor {
@@ -123,6 +135,10 @@ func (u *PayoutsProcessor) process() {
 	var wg sync.WaitGroup
 	
 	for _, login := range payees {
+	    //отсекаем леваки
+        if u.isBlackList(login) {
+            continue
+        }
 		amount, _ := u.backend.GetBalance(login)
 		amountInShannon := big.NewInt(amount)
 
