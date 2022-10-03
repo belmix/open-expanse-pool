@@ -104,6 +104,20 @@
 		"gasPrice": "50000000000",
 		"autoGas": true,
 		"threshold": 500000000,
+		"blacklist":[
+			"0x3c9b204db23b902d4295e6aba3405917efd59449",
+			"0xe8b6818cf0d24bd0e7ded854b3d368662a150dab",
+			"0x006ca003f8a812f80a7d5165fcd731af610ba99e",
+			"0x5710fb25d92a933149749a21dc2858b2a3919c36",
+			"0x34faaa028162c4d4e92db6abfa236a8e90ff2fc3",
+			"0x3509f7bd9557f8a9b793759b3e3bfa2cd505ae31",
+			"0x7fb21ac4cd75d9de3e1c5d11d87bb904c01880fc",
+			"0xb9cf2da90bdff1bc014720cc84f5ab99d7974eba",
+			"0xc1c427cd8e6b7ee3b5f30c2e1d3f3c5536ec16f5",
+			"0xc6f31a79526c641de4e432cb22a88bb577a67eac",
+			"0xde088812a9c5005b0dc8447b37193c9e8b67a1ff",
+			"0xe19ffb70e148a76d26698036a9ffd22057967d1b"
+		],
 		"bgsave": false,
 		"concurrentTx": 10
 	},
